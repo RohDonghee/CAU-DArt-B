@@ -79,7 +79,8 @@
 
 ---
 # 2️⃣ 학습 인증란
-<!-- 이 글을 지우고, 여기에 학습한 것을 인증해주세요.-->
+![image](https://user-images.githubusercontent.com/51365114/119627750-716f3100-be47-11eb-8e83-686b23c2c161.png)
+(https://github.com/RohDonghee/CAU-DArt-B/issues/1#issue-3390202988)
 
 
 <br>
