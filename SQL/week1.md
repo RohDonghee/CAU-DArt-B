@@ -115,12 +115,19 @@ Task가 주어졌을 때를 시발점으로 하여, 원하는 것을 설정하�
 
 ~~~
 스마트 헬스케어 : 웨어러블 기기와의 연동을 통해 혈압, 혈당, 심박수, 수면, 산소농도 등을 데이터(칼럼)을 확보할 수 있으며,
-대화를 통해 확보한 음성 정확성, 유창성, 어휘 능력 등의 부가적인 데이터(칼럼) 확보가 가능하다.
-이를 바탕으로 확보한 데이터 및 의료 API를 근거로 하여 의료 데이터 학습 기반 자체 진단 AI 개발 가능. 
-
+대화를 통해 확보한 음성 정확성, 유창성, 어휘 능력 등의 부가적인 데이터(칼럼) 확보가 가능합니다.
+이를 바탕으로 확보한 데이터 및 의료 API를 근거로 하여 의료 데이터 학습 기반 자체 진단 AI 개발 가능합니다.
 ~~~
-<img width="667" height="349" alt="image" src="https://github.com/user-attachments/assets/a46b7770-768d-4868-809d-3078af47ada7" />
-<img width="670" height="250" alt="image" src="https://github.com/user-attachments/assets/800e0d6f-fbc7-4c90-9079-5986fba4e946" />
+
+<img width="667" height="349" alt="image" src="https://github.com/user-attachments/assets/a46b7770-768d-4868-809d-3078af47ada7" /> <br>
+<img width="670" height="250" alt="image" src="https://github.com/user-attachments/assets/800e0d6f-fbc7-4c90-9079-5986fba4e946" /> <br>
+~~~
+스마트 헬스케어로 인해 비대면 진료의 용이성, 진료 신속성 등이 향상되어 수용 가능한 환자가 증가함에 따라,
+Capacity의 평균적인 증가폭을 데이터로 확보가 가능할 것입니다.
+동시에, 지역보건의료정보시스템(PHIS)을 통하여 디지털 헬스케어로 인해 증가한 지자체 차원의 전자의무기록(EMR)과 관내 환자 이용 패턴 데이터를 함께 수집·분석함으로써,
+지역 의료 자원의 효율적 배분과 공공의료 정책 수립에 기여할 수 있습니다.
+~~~
+<img width="670" height="400" alt="image" src="https://github.com/user-attachments/assets/b18b2e13-611d-421a-843d-7c23a5c3f6c2" />
 
 ## 문제 2
 
