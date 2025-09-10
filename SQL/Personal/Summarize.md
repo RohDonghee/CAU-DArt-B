@@ -24,7 +24,7 @@ ON A.user_no = B.user_no;
 #### What is a Join Key?
 A **join key** is the column (or set of columns) used to combine rows from two or more tables.  
 In relational databases, this is typically a **Primary Key ↔ Foreign Key** relationship.  
-- <b>Primary Key (PK)</b>: uniquely identifies a row in a table. In DBMS Tool, we can verify the '🔑' icon
+- <b>Primary Key (PK)</b>: uniquely identifies a row in a table. In a DBMS tool, we can verify whether a column is a primary key by the '🔑' icon.
 - <b>Foreign Key (FK)</b>: references the primary key of another table, establishing a relationship.  
 #### Example
 ```
@@ -35,10 +35,20 @@ INNER JOIN USED_GOODS_REPLY AS B
 WHERE  A.CREATED_DATE BETWEEN '2022-10-01' AND '2022-10-31'
 ORDER BY B.CREATED_DATE ASC, A.TITLE ASC;
 ```
+### WHERE : Condition
 
-GROUP BY : Group rows by specific columns
 
-HAVING : Filter groups
+### GROUP BY : Group rows by specific columns
+- The `GROUP BY` clause groups rows that have the same values in specified columns into summary rows.  
+- Often used together with aggregate functions like:
+  - `COUNT()`
+  - `SUM()`
+  - `AVG()`
+  - `MAX()`
+  - `MIN()`
+
+### HAVING : Filter groups 
+- HAVING is generally used with GROUP BY
 
 SELECT : Select output columns
 
