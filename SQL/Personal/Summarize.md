@@ -36,6 +36,7 @@ WHERE  A.CREATED_DATE BETWEEN '2022-10-01' AND '2022-10-31'
 ORDER BY B.CREATED_DATE ASC, A.TITLE ASC;
 ```
 ### WHERE : Condition
+#### LIKE ```SELECT * FROM TABLE WHERE NAME LIKE '라면'```
 
 
 ### GROUP BY : Group rows by specific columns
@@ -55,6 +56,7 @@ SELECT : Select output columns
 DISTINCT : Remove duplicates
 
 ### ORDER BY : Sort the result set (ASC, DESC)
+- ASC : 오름차순 / DESC : 내림차순
 - When using multiple columns in `ORDER BY`, <b>the leftmost column has the highest priority</b>
 - SQL sorts the result set from left to right in the order specified.
 - If two rows have the same value for the first column, the next column is used as a **tie-breaker**, and so on.
