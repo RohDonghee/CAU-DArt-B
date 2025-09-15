@@ -84,7 +84,21 @@
 * 중복 제거 여부, 컬럼 정렬 조건 등을 고려하여 올바르게 집합 연산자를 사용할 수 있다. 
 ~~~
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+### Union Clause 
+■ UNION: 두 쿼리 블록의 모든 결과를 결합하고, 중복 제거 <br>
+```SELECT '사과' UNION ALL SELECT '사과'; -- 결과: 사과, 사과 ``` <br>
+■ INTERSECT: 두 쿼리 블록 모두에 공통으로 존재하는 행만 반환, 중복 제거 <br>
+```SELECT '사과' INTERSECT SELECT '사과'; -- 결과: 사과 ``` <br>
+■ EXCEPT: 두 쿼리 블록 A, B에서 A에만 존재하고 B에는 없는 행 반환, 중복 제거 <br>
+```SELECT '사과' EXCEPT SELECT '바나나'; -- 결과: 사과 ``` <br>
+
+#### 옵션:
+  - `ALL` → 중복 허용 <br>
+  - `DISTINCT` → 중복 제거 (기본)
+
+#### 우선순위
+- INTERSECT는 UNION, EXCEPT보다 우선 평가
+- UNION, INTERSECT는 교환법칙 성립
 
 
 
@@ -97,10 +111,35 @@
 * NULL과 집계 함수가 어떻게 상호작용하는지 이해한다. 
 ~~~
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+### Aggregate Function
+# MySQL 집계 함수 정리
 
+# MySQL 집계 함수 정리
 
+| 함수 | 기본 설명 | 상세 설명 / 특징 | 예시 |
+|------|-----------|------------------|------|
+| **AVG([DISTINCT] expr)** | 평균값 반환 | - DISTINCT 지정 시 중복 제외 평균<br>- 행이 없거나 NULL만 있으면 NULL<br>- `OVER` 가능 (DISTINCT와 함께는 불가) | ```sql<br>SELECT AVG(score) FROM student;<br>``` |
+| **BIT_AND(expr)** | 비트 AND | - 이진 문자열/숫자 타입 지원<br>- NULL 무시 (전부 NULL → 중립값)<br>- 행이 없으면 “모든 비트=1” 반환<br>- `OVER` 가능 (8.0.12+) |  |
+| **BIT_OR(expr)** | 비트 OR | - BIT_AND와 유사 규칙<br>- 행이 없으면 “모든 비트=0” 반환<br>- `OVER` 가능 (8.0.12+) |  |
+| **BIT_XOR(expr)** | 비트 XOR | - BIT_AND와 유사 규칙<br>- 행이 없으면 “모든 비트=0” 반환<br>- `OVER` 가능 (8.0.12+) |  |
+| **COUNT(expr)** | 행 수 반환 | - NULL 제외 행 수 반환<br>- 전부 NULL/행 없음 → 0<br>- `COUNT(NULL)`은 항상 0<br>- `COUNT(*)`는 모든 행 수<br>- `OVER` 가능 | ```sql<br>SELECT COUNT(*) FROM student;<br>``` |
+| **COUNT(DISTINCT expr)** | 서로 다른 값의 개수 반환 | - 여러 컬럼 조합도 허용(MySQL 확장)<br>- NULL 제외 |  |
+| **GROUP_CONCAT(expr)** | 그룹 내 문자열 연결 | - 기본 구분자 `,` (SEPARATOR로 변경 가능)<br>- 결과 길이 = `group_concat_max_len` (기본 1024)<br>- 모두 NULL → NULL | ```sql<br>SELECT GROUP_CONCAT(score) FROM student;<br>``` |
+| **JSON_ARRAYAGG(expr)** | JSON 배열 집계 | - 각 행 값을 배열 요소로 변환<br>- NULL 요소는 `[null]`로 포함<br>- 행이 없으면 NULL<br>- `OVER` 가능 (8.0.14+) | ```sql<br>SELECT JSON_ARRAYAGG(attr) FROM t3;<br>``` |
+| **JSON_OBJECTAGG(key, val)** | JSON 객체 집계 | - (키, 값) 쌍 집계<br>- NULL 키 → 오류<br>- 중복 키 → 마지막 값이 우선<br>- `OVER` 가능 (8.0.14+) | ```sql<br>SELECT JSON_OBJECTAGG(c, i) FROM t;<br>``` |
+| **MAX([DISTINCT] expr)** | 최댓값 반환 | - NULL만 있으면 NULL<br>- 문자열/ENUM/SET 비교는 값 기준<br>- DISTINCT는 생략과 동일<br>- `OVER` 가능 (DISTINCT 불가) | ```sql<br>SELECT MAX(score) FROM student;<br>``` |
+| **MIN([DISTINCT] expr)** | 최솟값 반환 | - MAX와 동일한 제약 |  |
+| **STD(expr), STDDEV(expr)** | 모표준편차 | - `STDDEV_POP()` 별칭 (MySQL/Oracle 호환)<br>- NULL만 있으면 NULL<br>- `OVER` 가능 |  |
+| **STDDEV_POP(expr)** | 모표준편차 | - VAR_POP()의 제곱근 |  |
+| **STDDEV_SAMP(expr)** | 표본표준편차 | - VAR_SAMP()의 제곱근 |  |
+| **VAR_POP(expr), VARIANCE(expr)** | 모분산 | - VARIANCE는 VAR_POP의 별칭<br>- `OVER` 가능 |  |
+| **VAR_SAMP(expr)** | 표본분산 | - 분모 = N-1<br>- `OVER` 가능 |  |
+| **SUM([DISTINCT] expr)** | 합계 반환 | - DISTINCT → 중복 제외 합산<br>- NULL만 있으면 NULL<br>- `OVER` 가능 (DISTINCT 불가) | ```sql<br>SELECT SUM(score) FROM student;<br>``` |
 
+- 분산·표준편차 함수: 숫자 인자에 대해 DOUBLE 반환 <br>
+- SUM(), AVG(): <br>
+  - 정밀-값 인자(INTEGER, DECIMAL): DECIMAL 반환 <br>
+  - 근사-값 인자(FLOAT, DOUBLE): DOUBLE 반환 <br>
 
 
 <br><br>
