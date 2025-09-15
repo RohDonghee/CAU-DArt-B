@@ -114,8 +114,6 @@
 ### Aggregate Function
 # MySQL 집계 함수 정리
 
-# MySQL 집계 함수 정리
-
 | 함수 | 기본 설명 | 상세 설명 / 특징 | 예시 |
 |------|-----------|------------------|------|
 | **AVG([DISTINCT] expr)** | 평균값 반환 | - DISTINCT 지정 시 중복 제외 평균<br>- 행이 없거나 NULL만 있으면 NULL<br>- `OVER` 가능 (DISTINCT와 함께는 불가) | ```sql<br>SELECT AVG(score) FROM student;<br>``` |
@@ -141,9 +139,6 @@
   - 정밀-값 인자(INTEGER, DECIMAL): DECIMAL 반환 <br>
   - 근사-값 인자(FLOAT, DOUBLE): DOUBLE 반환 <br>
 
-
-<br><br>
-
 ---
 
 # 3️⃣ 실습 문제
@@ -164,7 +159,8 @@ https://leetcode.com/problems/department-highest-salary/description/
 
 ## 문제 인증란
 
-<!-- 이 주석을 지우고 여기에 문제 푼 인증사진을 올려주세요. -->
+<img width="1065" height="1340" alt="image" src="https://github.com/user-attachments/assets/e6be620b-7018-4c5a-8e0f-c2b2db8a3952" />
+
 
 
 
@@ -187,7 +183,9 @@ SELECT name FROM blackList;
 <br>
 
 ~~~
-여기에 답을 작성해주세요!
+UNION -> SELECT 결과를 합쳐서 반환 (자동으로 중복 제거)
+UNION ALL -> SELECT 결과를 이어서 붙임 (중복 제거 X)
+UNION을 사용했기 때문에 중복된 name이 사라짐 
 ~~~
 
 ## 참고자료
