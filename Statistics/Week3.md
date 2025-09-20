@@ -43,7 +43,94 @@
 * 비즈니스 문제를 정의할 때 주의할 점을 설명할 수 있다.
 * 외부 데이터를 수집하는 방법에 대해 인식한다.
 ```
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+### 1) CRISP-DM 방법론 (Cross Industry Standard Process for Data Mining)
+
+데이터 마이닝 및 분석 프로젝트를 위한 **표준 프로세스 모델**
+
+#### 단계별 구성
+1. **비즈니스 이해 (Business Understanding)**
+   - 현재 상황 평가 (Assess the current situation)
+   - 데이터 마이닝 목표 결정 (Determine data mining goals)
+   - 프로젝트 계획 수립 (Produce project plan)
+
+2. **데이터 이해 (Data Understanding)**
+   - 데이터 설명 (Describe data)
+   - 데이터 탐색 (Explore data)
+   - 데이터 품질 확인 (Verify data quality)
+
+3. **데이터 준비 (Data Preparation)**
+   - 데이터 선택 (Select data)
+   - 데이터 정제 (Clean data)
+   - 필수 데이터 구성 (Construct required data)
+   - 데이터 통합 (Integrate data)
+
+4. **모델링 (Modeling)**
+   - 모델링 기법 선정 (Select modeling technique)
+   - 테스트 디자인 생성 (Generate test design)
+   - 모델 구축 (Build model)
+   - 모델 평가 (Assess model)
+
+5. **평가 (Evaluation)**
+   - 결과 평가 (Evaluate results)
+   - 프로세스 검토 (Review process)
+   - 다음 단계 결정 (Determine next steps)
+
+6. **배포 (Deployment)**
+   - 배포 계획 (Plan deployment)
+   - 모니터링 및 유지관리 계획 (Plan monitoring & maintenance)
+   - 최종 보고서 작성 (Final report)
+   - 프로젝트 검토 (Review project)
+
+> 🔑 특징: **순환형 프로세스**로 각 단계를 반복·보완하며 완성도를 높임
+
+---
+
+### 2) SAS SEMMA 방법론  
+(Sampling → Exploration → Modification → Modeling → Assessment)
+
+SAS에서 제시한 **데이터 마이닝 절차**, 실무 분석 자동화에 최적화된 접근 방식 <br>
+특징: **분석 도구 중심** 절차 (특히 SAS E-miner 환경 활용)<br>
+
+#### 단계별 구성
+1. **Sampling (데이터 추출)**
+   - 분석용 데이터 추출 및 분할 (학습/검증/테스트)
+   - 대표성을 가진 샘플 데이터 생성
+
+2. **Exploration (데이터 탐색)**
+   - 통계치 확인, 그래프 시각화
+   - 상관분석, 군집분석으로 변수 관계 탐색
+   - 모델링에 적합한 변수 선정
+
+3. **Modification (변수 가공)**
+   - 결측치 처리 및 최종 분석 변수 선택
+   - 로그변환, 구간화(Binning) 적용
+   - 주성분분석(PCA) 등 새로운 변수 생성
+
+4. **Modeling (모델 구축)**
+   - 데이터마이닝 기법 선택 및 적용
+   - 지도학습·비지도학습·강화학습 등 형태별 모델 적용
+   - 성능·정확도를 고려한 세부 옵션 설정
+
+5. **Assessment (모델 평가)**
+   - 모델 성능 비교, 분석 및 평가
+   - 비즈니스 적합 임계값(Cut-off) 설정
+   - 결과를 실제 인사이트에 적용
+   - 필요 시 추가 데이터 분석 수행
+
+
+
+---
+
+### 3) MECE 원칙 (Mutually Exclusive, Collectively Exhaustive)
+
+비즈니스 문제 정의 시 활용되는 **논리적 구조화 방법**
+
+- **Mutually Exclusive (상호 배타적)**  
+  → 세부 항목 간 **중복 없음**
+
+- **Collectively Exhaustive (전체 포괄적)**  
+  → 모든 경우를 **빠짐없이 포함**
+<img width="720" height="540" alt="image" src="https://github.com/user-attachments/assets/b85d508d-ce4a-44a5-825d-65f44e5f45ab" />
 
 
 
@@ -56,7 +143,58 @@
 * ERD의 개념과 역할을 이해하고, 기본 구성 요소와 관계 유형을 설명할 수 있다.
 ```
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+### 9.4 테이블 조인과 정의서 그리고 ERD
+
+데이터 분석가는 여러 개의 테이블을 결합해 새로운 인사이트를 도출한다.  
+이를 위해 **테이블 속성과 관계를 명확히 인지**하고 있어야 하며, 조인(Join)을 통해 결합한다.  
+
+#### 9.4.1 테이블 조인
+- **INNER JOIN**: 두 테이블에서 공통 키 값이 일치하는 행만 추출  
+- **LEFT JOIN**: 왼쪽 테이블 전체 + 오른쪽 테이블 일치 데이터  
+- **RIGHT JOIN**: 오른쪽 테이블 전체 + 왼쪽 테이블 일치 데이터  
+- **FULL JOIN**: 양쪽 테이블 전체 (일치하지 않는 값은 NULL)  
+- **CROSS JOIN**: 두 테이블의 모든 행을 곱집합으로 생성  
+
+💡 Left Join과 Right Join은 기준이 되는 테이블 방향만 다름. <br>
+💡 Inner Join은 교집합, Full Join은 합집합 개념과 유사.<br>
+<img width="600" height="472" alt="image" src="https://github.com/user-attachments/assets/57b82a96-ba5d-479e-a4de-339b7091ab85" /><br>
+
+
+---
+
+#### 9.4.2 데이터 단어사전
+- **정의**: 데이터 단어사전은 각 칼럼과 테이블의 이름을 정할 때 체계를 약속한 일종의 사전  
+- **필요성**: 수많은 테이블을 빠르게 이해하고 일관성 있게 관리하기 위함  
+- **예시**  
+  - CUST: 고객(Customer)  
+  - MDCIS_CD: 중분류 코드(Middle Class Code)  
+  - VAL: 값(Value)  
+
+
+---
+
+#### 9.4.3 ERD (Entity Relationship Diagram)
+- **정의**: 데이터베이스의 테이블 간 관계를 시각적으로 표현한 다이어그램  
+- **구성 요소**  
+  - **엔티티(Entity)**: 테이블  
+  - **속성(Attribute)**: 테이블의 필드(열)  
+  - **관계(Relationship)**: 엔티티 간의 연결  
+
+- **주요 키(Key)**  
+  - **PK (Primary Key)**: 기본 키, 테이블 내 고유 식별자  
+  - **FK (Foreign Key)**: 외래 키, 다른 테이블 PK를 참조  
+  - **Candidate Key**: 후보 키  
+  - **Super Key**: 유일성을 만족하는 속성 집합  
+
+- **관계 유형(Cardinality)**  
+  - 1:1 (One to One)  
+  - 1:N (One to Many)  
+  - N:M (Many to Many)  <br>
+<img width="641" height="258" alt="image" src="https://github.com/user-attachments/assets/d7d3ef64-6053-4ef6-a477-6d871a03bef6" /> <br>
+
+
+💡 ERD는 물리적(Physical) & 논리적(Logical) 구조로 나눌 수 있으며, 데이터베이스 설계 및 분석의 기초.
+
 
 
 <br>
@@ -111,7 +249,7 @@
 | 1009       | 노동희     | 차장    | 10         | 인사팀     | 서울         |
 
 ```
-여기에 답을 작성해주세요!
+LEFT JOIN
 ```
 
 
@@ -130,7 +268,7 @@
 | 1009       | 노동희     | 차장    | 10         | 인사팀     | 서울         |
 
 ```
-여기에 답을 작성해주세요!
+INNER JOIN 
 ```
 
 
@@ -149,8 +287,7 @@
 | 1008       | 최철원     | 대리    | 40         | 전산팀     | 대전         |
 |            |            |         | 50         | 법무팀     | 인천         |
 
-```
-여기에 답을 작성해주세요!
+```RIGHT JOIN
 ```
 
 
