@@ -86,13 +86,76 @@
 * 이전 또는 이후 행을 참조하는 LAG, LEAD 함수를 적절히 사용할 수 있다.
 ~~~
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+### Window Function Concepts and Syntax
+   - 여러 행 간의 관계를 정의하기 위한 함수 
 
+#### 함수 종류
+   - ```OVER```의 유무에 따라 window 함수와 일반 집계 함수로 구분. <br>
+   - 행 순위 함수, 비율 함수는 window 함수로만 사용이 가능하며, ```OVER```절이 필수적. <br>
+#### 함수 종류
+| 구분       | 함수 예시 |
+| ---------- | --------------------------------------- |
+| 순위 함수  | RANK, DENSE_RANK, ROW_NUMBER            |
+| 집계 함수  | SUM, MAX, MIN, AVG, COUNT               |
+| 행 순서 함수 | FIRST_VALUE, LAST_VALUE, LAG, LEAD     |
+| 비율 함수  | CUME_DIST, PERCENT_RANK, NTILE, RATIO_TO_REPORT |
+
+#### OVER절의 문법 
+```MySQL
+over_clause: {OVER (window_spec) | OVER window_name}
+```
+
+``` MySQL
+# RANK
+SELECT EMPNO, SAL, RANK() OVER(ORDER BY SAL) AS RANK
+FROM EMP;
+
+#DENS_RANK
+SELECT EMPNO, SAL, DENSE_RANK() OVER(ORDER BY SAL) AS DENS_RANK
+FROM EMP;
+
+#LAST_VALUE
+SELECT DEPTNO, EMPNO, SAL, 
+       LAST_VALUE(SAL) OVER (
+           PARTITION BY DEPTNO #그룹연산을 수행할 칼럼 
+           ORDER BY SAL DESC #순서
+           RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING #연산 범위 설정
+       ) AS LAST_VALUE
+FROM EMP;
+
+```
+
+### Window Function Descriptions
+- 대부분의 집계함수도 ```OVER```절이 존재하면 window 함수로 사용 가능 <br>
+
+### 📌 비집계 함수 정리
+
+| 이름              | 코드명                          | 설명 |
+| ----------------- | ------------------------------- | ---- |
+| **순위 함수**     | RANK()                         | 동일 순위 발생 시 건너뛰는 순위 부여 (ex. 1,2,2,4) |
+|                   | DENSE_RANK()                   | 동일 순위 발생 시 연속적인 순위 부여 (ex. 1,2,2,3) |
+|                   | ROW_NUMBER()                   | 동일 값과 상관없이 행마다 고유한 일련번호 부여 |
+|                   | PERCENT_RANK()                 | 파티션 내 상대적 백분율 순위 (0 ~ 1) |
+|                   | CUME_DIST()                    | 파티션 내 누적 분포 비율 (0 ~ 1) |
+|                   | NTILE(N)                       | 데이터를 N등분하여 그룹 번호 부여 |
+|                   | RATIO_TO_REPORT()              | 파티션 내 전체 합계 대비 비율 계산 |
+| **행 순서 함수** | FIRST_VALUE(expr)              | 파티션 내 첫 번째 값 반환 |
+|                   | LAST_VALUE(expr)               | 파티션 내 마지막 값 반환 (윈도우 범위에 따라 달라짐) |
+|                   | NTH_VALUE(expr, N)             | 파티션 내 N번째 값 반환 (없으면 NULL) |
+|                   | LAG(expr, [N], [default])      | 현재 행 기준 **이전 N번째 행 값** 반환 |
+|                   | LEAD(expr, [N], [default])     | 현재 행 기준 **다음 N번째 행 값** 반환 |
+
+---
+
+🔑 **정리**  
+- **순위 함수**: 행의 순서를 매기거나 비율/등분으로 구분할 때 사용  
+- **행 순서 함수**: 이전/다음/첫/마지막 값 등 행 간 비교가 필요할 때 사용  
+- **비율 함수**: 파티션 내 상대적인 위치, 분포, 비율을 계산할 때 활용  
 
 
 ---
 
-# 3️⃣ 실습 문제
+# 3️⃣ 실습 문제       
 
 ## LeetCode 문제 
 
