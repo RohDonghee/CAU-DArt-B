@@ -100,6 +100,14 @@
 | 행 순서 함수 | FIRST_VALUE, LAST_VALUE, LAG, LEAD     |
 | 비율 함수  | CUME_DIST, PERCENT_RANK, NTILE, RATIO_TO_REPORT |
 
+#### PARTITION BY
+```MySQL
+SELECT 집계합수([컬럼명]) OVER (PARTITION BY [컬럼명])
+```
+   - 그룹 내 순위 및 그룹 별 집계 산정 가능
+   - 
+
+
 #### OVER절의 문법 
 ```MySQL
 over_clause: {OVER (window_spec) | OVER window_name}
@@ -152,7 +160,6 @@ FROM EMP;
 - **행 순서 함수**: 이전/다음/첫/마지막 값 등 행 간 비교가 필요할 때 사용  
 - **비율 함수**: 파티션 내 상대적인 위치, 분포, 비율을 계산할 때 활용  
 
-
 ---
 
 # 3️⃣ 실습 문제       
@@ -185,6 +192,7 @@ https://leetcode.com/problems/last-person-to-fit-in-the-bus/
 
 ## 문제 인증란
 <img width="1061" height="1657" alt="image" src="https://github.com/user-attachments/assets/32e6c088-f369-4cf3-be1e-477c812d348b" />
+<img width="1059" height="1405" alt="image" src="https://github.com/user-attachments/assets/971366f6-846f-48b7-a277-442c664df734" />
 
 
 
@@ -205,9 +213,24 @@ FROM Orders;
 
 > **이번에는 예린이에게 "윈도우 함수를 쓰지 않고 동일한 결과를 만들어보라"는 미션을 받았습니다. 예린이는 이 작업을 어떻게 해야할지 막막합니다. 예린이를 도와 ROW_NUMBER() 윈도우 함수 없이 동일한 결과를 서브쿼리나 JOIN을 사용해서 작성해보세요.**
 
-~~~
-여기에 답을 작성해주세요!
-~~~
+
+```SQL
+SELECT
+  o.customer_id,
+  o.order_id,
+  o.order_date,
+  COUNT(p.order_id) AS order_rank
+FROM Orders o
+JOIN Orders p
+  ON p.customer_id = o.customer_id
+ AND (
+      p.order_date <  o.order_date
+   OR (p.order_date = o.order_date AND p.order_id <= o.order_id)
+ )
+GROUP BY o.customer_id, o.order_id, o.order_date
+ORDER BY o.customer_id, order_rank;
+```
+
 
 
 
