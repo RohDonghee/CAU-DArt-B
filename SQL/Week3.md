@@ -184,8 +184,8 @@ https://leetcode.com/problems/last-person-to-fit-in-the-bus/
 ---
 
 ## 문제 인증란
+<img width="1061" height="1657" alt="image" src="https://github.com/user-attachments/assets/32e6c088-f369-4cf3-be1e-477c812d348b" />
 
-<!-- 이 주석을 지우고 여기에 문제 푼 인증사진을 올려주세요. -->
 
 
 
