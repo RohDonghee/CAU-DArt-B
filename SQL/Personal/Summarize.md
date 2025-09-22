@@ -57,7 +57,16 @@ ON A.user_no = B.user_no;
 - After using GROUP BY, set the condition <br>
 
 ## 2-5 SELECT : Select output columns
-
+### ■ CASE WHEN 
+- multiple conditon
+```MySQL
+SELECT CASE
+  WHEN conditon1 THEN (if conditon1 is True)
+  WHEN condition2 THEN (if condition2 is True)
+  ELSE (other condition)
+END AS (new_column_name)
+FRM (table_name)
+```
 
 ## 2-6 ORDER BY : Sort the result set (ASC, DESC)
 - ASC : 오름차순 / DESC : 내림차순
