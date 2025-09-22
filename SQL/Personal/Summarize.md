@@ -49,7 +49,8 @@ ORDER BY B.CREATED_DATE ASC, A.TITLE ASC;
   - `MIN()`
 
 ### HAVING : Filter groups 
-- HAVING is generally used with GROUP BY
+- HAVING is generally used with GROUP BY <br>
+- After using GROUP BY, set the condition <br>
 
 SELECT : Select output columns
 
