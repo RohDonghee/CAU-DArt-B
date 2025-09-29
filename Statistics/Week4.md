@@ -84,6 +84,7 @@
   - 각 변수 사이의 선형적 연관성의 강도와 방향을 나타내는 수치
   - 산점도의 기울기와 상관계수 간의 관련 없음
   - -1 < R < 1 <br>
+<br>
 <img width="606" height="80" alt="image" src="https://github.com/user-attachments/assets/7b2ce126-2e50-45e1-aa97-3012b161bbf5" /><br>
 <img width="627" height="154" alt="image" src="https://github.com/user-attachments/assets/46dfcedb-8827-4033-9d3c-af2abd062ffb" />
 
@@ -99,7 +100,8 @@
 >
 > > **인증 예시 : 통계 프로그램 결과, 시각화 이미지 캡처 등**
 
-<!-- 이 주석을 지우고 “실습 결과 화면(캡처)을 이곳에 첨부해주세요.-->
+<img width="1079" height="1719" alt="image" src="https://github.com/user-attachments/assets/1d435600-b128-4c42-94d1-7967d901629c" />
+
 
 ~~~
 인증 이미지가 없으면 과제 수행으로 인정되지 않습니다.
