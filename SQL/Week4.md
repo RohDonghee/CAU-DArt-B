@@ -140,8 +140,8 @@ https://school.programmers.co.kr/learn/courses/30/lessons/133027
 ---
 
 ## 문제 인증란
+<img width="1910" height="910" alt="image" src="https://github.com/user-attachments/assets/87e8d838-41f5-49c0-b4a5-cf275e227a7c" />
 
-<!-- 이 주석을 지우고 여기에 문제 푼 인증사진을 올려주세요. -->
 
 
 
@@ -184,7 +184,23 @@ UNION ALL
 
 
 ~~~
-여기에 답을 작성해주세요!
+```MySQL
+WITH ranked AS (
+  SELECT
+      region,
+      restaurant_name,
+      review_count,
+      ROW_NUMBER() OVER (
+        PARTITION BY region
+        ORDER BY review_count DESC, restaurant_name ASC
+      ) AS rn
+  FROM Restaurants
+)
+SELECT region, restaurant_name, review_count
+FROM ranked
+WHERE rn <= 2
+ORDER BY region, rn;
+```
 ~~~
 
 
