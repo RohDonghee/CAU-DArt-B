@@ -183,8 +183,8 @@ UNION ALL
 
 
 
-~~~
-```MySQL
+~~~MySQL
+
 WITH ranked AS (
   SELECT
       region,
@@ -200,7 +200,7 @@ SELECT region, restaurant_name, review_count
 FROM ranked
 WHERE rn <= 2
 ORDER BY region, rn;
-```
+
 ~~~
 
 
