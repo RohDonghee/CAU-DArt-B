@@ -1,3 +1,13 @@
-# CAU-DArt-B
-Joined DArt-B, a data analytics academic society at Chung-Ang University as part of the 6th cohort starting Fall 2025. <p>
-Engaged in projects focused on SQL, Python, and data visualization.
+# Overview
+This repository gathers my end-to-end learning across **data acquisition**, **data analysis**, and **ML (machine learning)**.  
+It includes concept-first study notes on **Statistics**, **Python**, and **SQL**, organized from theory → examples → brief exercises.
+
+---
+
+## Included Courses & Activities
+- **DArt-B**, the data analytics club at **Chung-Ang University**
+- **Business & Economics Software Programming**
+- **Business & Economics Data Analytics Software**
+- **Data Analytics** (selected coursework and labs)
+
+> Note: Full projects and algorithm problem-solving are maintained in separate repositories.
